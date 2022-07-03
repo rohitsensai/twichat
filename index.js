@@ -56,12 +56,6 @@ app.use(session({
     saveUninitialized:false
 }))
 
-//api key iCAbgcUEzonxVYa7XkkghepKF
-//api secret key ZgGeV6GGPfSC0SWj3fMc8Ym3IJAdJXXimtepG2GFI9zeLi2knI
-//token key 737638593565450240-RC5mWAONZdrood4W568N24opvnOtyli
-//token secret NhYHnlRZhM8WXQkfZrPn57MH47HhBfTCVToXQRszmAhSl
-//bearer token AAAAAAAAAAAAAAAAAAAAALdieQEAAAAA88dYK5FD2fNxvX0aQh%2BgRDpcnS8%3DfAI9ag7dqqSMzxQto0iqP622IwTVodZXpQpRko1kqmlSCA2jit
-
 
 const Storage=multer.diskStorage({
     destination:"./public/uploads",
