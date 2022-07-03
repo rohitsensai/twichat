@@ -1,0 +1,61 @@
+<%- include('partials/header') %>
+</head>
+<body>
+<%- include('partials/navbar') %> 
+
+<a id="old" style="cursor: pointer; position: absolute; right: 1%; top: 1%; width: 6%; display:flex ; flex-direction: column;  align-items: center;" onclick="myfunction()">
+
+
+      <img height="50px" width="50px" style="object-fit:cover ; border-radius:50%" src="/uploads/<%= user.img.src %> " >
+          
+  <%= user.username %> 
+          </a>
+  
+  <div id="newdash" style="background-color: rgb(107, 103, 98); display:none ; position: absolute; margin: 0 auto; right: 0%; top: 0%; text-align: center; height: 5rem; width: 10%; border:2px solid rgb(56, 44, 147)">
+  <a href="/viewdp/<%= user.img.src %>/<%= id %>  " style="color: antiquewhite; display:block ;">view</a>
+  <form  action="/setdp/<%=id %> " method="post" enctype="multipart/form-data">
+  <label style="color: antiquewhite; cursor:pointer ;" for="img">Set profile picture</label>
+  <input  style="display:none ;" type="file" id="img" name="img" onchange="this.form.submit()" >
+  </form>
+  </div>
+   
+
+  <div class="input-group" style=" display: flex;  justify-content: center;">
+    <form action="/newtweets/<%= id %> " method="post">
+    <div class="form-outline" style="display: flex;">
+      <label class="form-label" for="form1"></label>
+      <input  name="s" type="search" id="form1" class="form-control" placeholder="search your favourite!"/>
+      <button type="submit" class="btn btn-primary"> <i class="fas fa-search"></i></button>
+    </div>
+    </form>
+  </div>
+
+  <div >
+  <ul style="list-style:none ;">
+  <% for(let tweet of tweets){ %>
+    <li> 
+      <%= tweet.created_at %> 
+
+      <div style=" display: flex; flex-direction: column;">
+    <div style="display:flex ; align-items: center;">
+      <img src="<%=tweet.user.profile_image_url %>" style="border-radius:50% ;">
+       <h4><%= tweet.user.name%></h4>
+      </div>
+    <div>
+      <%= tweet.full_text %>
+      </div>
+      </div>
+      <hr>
+    </li>
+    <% } %>  
+  </ul>
+  </div>
+<script>
+    function myfunction(){
+      var foo=document.getElementById('newdash');
+      foo.style.display='block'
+    }
+</script>
+<%- include('partials/footer') %> 
+</body>
+</html>

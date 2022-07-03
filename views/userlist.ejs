@@ -1,0 +1,36 @@
+<%- include('partials/header') %> 
+</head>
+<body>
+<%- include('partials/navbar') %>
+    <h2>All Users</h2>
+
+    <ul style="list-style:none ;">
+    <% for(let u of users) {%>
+        <% if(u.id!= id) {%>
+            <div style="width:100% ;   display:flex ;  ">
+
+            <img height="90px" width="90px" style=" object-fit: cover; border-radius: 50%;" src="/uploads/<%= u.img.src %> " >
+                <div>       
+            <li><%= u.username%></li>
+           <% if(friends.includes(u.id)) {%>
+             <form action="/<%= id %>/remove/<%= u.id %>?_method=delete" method="post">
+                <button type="submit">Remove friend</button>
+            </form>
+             <% } else {%> 
+                <form action="/<%= id %>/add/<%= u.id %> " method="post">
+                    <button type="submit">Add friend</button>
+                </form>
+             <% } %> 
+             <form action="/chats/<%= id %>/<%= u.id %>" >
+                <button type="submit">Message</button>
+            </form>
+                </div>
+            </div>
+            <% } %>  
+      
+        <% } %>  
+    </ul>
+
+<%- include('partials/footer') %> 
+</body>
+</html>
